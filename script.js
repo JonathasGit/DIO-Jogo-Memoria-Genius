@@ -12,7 +12,7 @@ const vermelho = document.querySelector('vermelho');
 const verde = document.querySelector('verde');
 const amarelo = document.querySelector('amarelo');
 
-
+//Criando ordem aleatorio de cores
 let selecionarOrdem = () => { //Criando a função 
     let guardarNumero = Math.floor(Math.random() * 4 ); // guarda numero aleatorio a cada rodada - Arredonda o número associado 
     ordem[ordem.length] = guardarNumero; // atribuir a ordem ao proximo numero ,
@@ -25,6 +25,8 @@ let selecionarOrdem = () => { //Criando a função
     }   
 }
 
+
+// Acende a próxima cor
 let corClara = (Element, Number) => {
     Number = Number * 500;
     setTimeout(() => { // espera  o tempo passar
@@ -34,4 +36,33 @@ let corClara = (Element, Number) => {
     setTimeout(() =>{
         Element.classList.remove('selected');
     });
+}
+
+// Variavel para comparar seu eu cliquei certo, com as cores que o jogo me retornou 
+let checarOrdem = () => {
+    for(let i in ordemClicada){
+        if(ordemClicada[i] !=ordem[i]){ // compração se ordem clicada for diferente de ordem na posição i Rodar nova função
+            perdeu();
+            break;
+
+
+        }
+    }
+    if(ordemClicada.length == ordem.length){ // Comparação se o valor é o mesmo
+        alert(`Pontuação ${score}\n Você ganhou`);
+        nivelSeguinte();
+
+    }
+}
+
+// função para ver o clique do usuário
+let clicar = (color) => {
+    ordemClicada[ordemClicada.length] = color;
+    criarElemento(color).classList.add('selected');
+
+    setTimeout(() => {
+        criarElemento(color).classList.remove('selected');
+    })
+
+    checarOrdem();
 }
