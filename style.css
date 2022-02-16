@@ -6,8 +6,8 @@ body{
 
 .game{
     color: blue;
-    height: 100vh;
-    width: 100vh;
+    height: 100;
+    width: 100;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@ body{
     display: grid;
     grid-template-areas: 'verde vermelho'
     'amarelo azul';
-    grid-gap: 10px;
+    grid-gap: 25px;
     border: 1px solid #000000;
     background-color: blanchedalmond;
     border-radius: 100%;
